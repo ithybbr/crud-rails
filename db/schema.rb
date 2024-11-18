@@ -27,7 +27,7 @@ ActiveRecord::Schema[8.0].define(version: 0) do
   create_table "disease", primary_key: "disease_code", id: { type: :string, limit: 50 }, force: :cascade do |t|
     t.string "pathogen", limit: 20
     t.string "description", limit: 140
-    t.integer "id"
+    t.integer "id_disease"
   end
 
   create_table "diseasetype", id: :integer, default: nil, force: :cascade do |t|
@@ -35,7 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 0) do
   end
 
   create_table "doctor", primary_key: "email", id: { type: :string, limit: 60 }, force: :cascade do |t|
-    t.string "degree", limit: 20
+    t.string "degree", limit: 20, null: false
   end
 
   create_table "patientdisease", primary_key: ["email", "disease_code"], force: :cascade do |t|
@@ -58,8 +58,8 @@ ActiveRecord::Schema[8.0].define(version: 0) do
     t.integer "total_patients"
   end
 
-  create_table "specialize", primary_key: ["id", "email"], force: :cascade do |t|
-    t.integer "id", null: false
+  create_table "specialize", primary_key: ["id_specialize", "email"], force: :cascade do |t|
+    t.integer "id_specialize", null: false
     t.string "email", limit: 60, null: false
   end
 
@@ -71,18 +71,18 @@ ActiveRecord::Schema[8.0].define(version: 0) do
     t.integer "salary"
   end
 
-  add_foreign_key "discover", "country", column: "cname", primary_key: "cname", name: "discover_cname_fkey"
-  add_foreign_key "discover", "disease", column: "disease_code", primary_key: "disease_code", name: "discover_disease_code_fkey"
-  add_foreign_key "disease", "diseasetype", column: "id", name: "disease_id_fkey"
-  add_foreign_key "doctor", "users", column: "email", primary_key: "email", name: "doctor_email_fkey", on_delete: :cascade
-  add_foreign_key "patientdisease", "disease", column: "disease_code", primary_key: "disease_code", name: "patientdisease_disease_code_fkey"
-  add_foreign_key "patientdisease", "users", column: "email", primary_key: "email", name: "patientdisease_email_fkey", on_delete: :cascade
-  add_foreign_key "patients", "users", column: "email", primary_key: "email", name: "patients_email_fkey", on_delete: :cascade
-  add_foreign_key "publicservant", "users", column: "email", primary_key: "email", name: "publicservant_email_fkey", on_delete: :cascade
-  add_foreign_key "record", "country", column: "cname", primary_key: "cname", name: "record_cname_fkey"
-  add_foreign_key "record", "disease", column: "disease_code", primary_key: "disease_code", name: "record_disease_code_fkey"
-  add_foreign_key "record", "users", column: "email", primary_key: "email", name: "record_email_fkey", on_delete: :cascade
-  add_foreign_key "specialize", "diseasetype", column: "id", name: "specialize_id_fkey"
-  add_foreign_key "specialize", "users", column: "email", primary_key: "email", name: "specialize_email_fkey", on_update: :cascade
-  add_foreign_key "users", "country", column: "cname", primary_key: "cname", name: "fk_users_country"
+  add_foreign_key "discover", "country", column: "cname", primary_key: "cname", name: "discover_cname_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "discover", "disease", column: "disease_code", primary_key: "disease_code", name: "discover_disease_code_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "disease", "diseasetype", column: "id_disease", name: "disease_id_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "doctor", "users", column: "email", primary_key: "email", name: "doctor_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "patientdisease", "disease", column: "disease_code", primary_key: "disease_code", name: "patientdisease_disease_code_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "patientdisease", "users", column: "email", primary_key: "email", name: "patientdisease_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "patients", "users", column: "email", primary_key: "email", name: "patients_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "publicservant", "users", column: "email", primary_key: "email", name: "publicservant_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "record", "country", column: "cname", primary_key: "cname", name: "record_cname_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "record", "disease", column: "disease_code", primary_key: "disease_code", name: "record_disease_code_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "record", "users", column: "email", primary_key: "email", name: "record_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "specialize", "diseasetype", column: "id_specialize", name: "specialize_id_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "specialize", "users", column: "email", primary_key: "email", name: "specialize_email_fkey", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "users", "country", column: "cname", primary_key: "cname", name: "fk_users_country", on_update: :cascade, on_delete: :cascade
 end
