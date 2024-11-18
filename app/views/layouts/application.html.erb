@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Health Care Database System</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+  </head>
+  <body class="<%= "#{controller_name}-#{action_name} #{action_name}-page" %>">
+    <!-- Navigation (from index.html.erb or another file) -->
+    <%= render 'shared/navigation' %>
+    <!-- Content of the current view -->
+    <%= yield %>
+  </body>
+</html>

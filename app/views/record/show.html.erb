@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @record %>
+
+<div>
+  <%= link_to "Edit XCthis record", edit_record_path(email: @record.email, cname: @record.cname, disease_code: @record.disease_code) %> |
+  <%= link_to "Back to records", record_path %>
+
+  <%= button_to "Destroy this record", record_path(email: @record.email, cname: @record.cname, disease_code: @record.disease_code), method: :delete %>
+</div>

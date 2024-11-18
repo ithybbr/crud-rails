@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Discover" %>
+
+<h1>Discover
+
+<%= link_to "New discover", new_discover_path, class:'button-4', id:'tb' %>
+</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Disease code</th> 
+      <th>First encounter date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @discover.each do |discover| %>
+      <tr>
+        <td><%= discover.cname %></td>
+        <td><%= discover.disease_code %></td>
+        <td><%= discover.first_enc_date %></td>
+        <td><%= link_to 'Edit', edit_discover_path(discover.disease_code), class:'button-4' %></td>
+        <td><%= button_to 'Destroy', discover_path(discover.disease_code), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class:'button-4' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

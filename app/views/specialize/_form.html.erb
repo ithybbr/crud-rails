@@ -1,0 +1,29 @@
+<%= form_with model: specialize, 
+              url: @specialize.persisted? ? specialize_path(id_specialize: @specialize.id_specialize, email: @specialize.email) : specialize,
+              method: @specialize.persisted? ? :patch : :post do |form| %>
+  <% if specialize.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(specialize.errors.count, "error") %> prohibited this specialize from being saved:</h2>
+
+      <ul>
+        <% specialize.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :id, style: "display: block" %>
+    <%= form.number_field :id_specialize %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

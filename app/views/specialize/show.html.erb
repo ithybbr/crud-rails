@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @specialize %>
+
+<div>
+  <%= link_to "Edit this specialize", edit_specialize_path(@specialize) %> |
+  <%= link_to "Back to specialize", specialize_index_path %>
+
+  <%= button_to "Destroy this specialize", @specialize, method: :delete %>
+</div>

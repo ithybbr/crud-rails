@@ -1,0 +1,34 @@
+<%= form_with model: discover,
+  url: @discover.persisted? ? discover_path(disease_code: @discover.disease_code) : discover,
+ method: @discover.persisted? ? :patch : :post do |form| %>
+  <% if discover.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(discover.errors.count, "error") %> prohibited this discover from being saved:</h2>
+
+      <ul>
+        <% discover.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :cname, style: "display: block" %>
+    <%= form.text_field :cname %>
+  </div>
+
+  <div>
+    <%= form.label :disease_code, style: "display: block" %>
+    <%= form.text_field :disease_code %>
+  </div>
+
+  <div>
+    <%= form.label :first_enc_date, style: "display: block" %>
+    <%= form.date_field :first_enc_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

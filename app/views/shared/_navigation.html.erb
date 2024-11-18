@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+    h1{
+      text-align: center;
+    }
+    body{
+      background-color: rgb(222, 255, 224);
+    }
+    a {
+      color: rgb(65, 49, 14);
+      text-decoration: none;
+    }
+    a + a {
+      margin-left:20px;
+    }
+    .buttons{
+      text-align: center;
+      font-size: large;
+      padding-top: 20px;
+    }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health Care Database System</title>
+  </head>
+  <body>
+    <h1>Health Care Database System</h1>
+    <div class='buttons'>
+    <%= link_to "Countries", Country %>
+    <%= link_to "Users", User %>
+    <%= link_to "Diseases", Disease %>
+    <%= link_to "Patients", Patient %>
+    <%= link_to "Doctors", Doctor %>
+    <%= link_to "Disease types", Diseasetype %>
+    <%= link_to "Discovers", Discover %>
+    <%= link_to "Specialize", Specialize %>
+    <%= link_to "Public Servants", Publicservant %>
+    <%= link_to "Patients' diseases", Patientdisease %>
+    <%= link_to "Records", Record %>
+    </div>
+  </body>
+</html>

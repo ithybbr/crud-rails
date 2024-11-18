@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<div class='showr'>
+<%= render @country %>
+
+  <%= link_to "Edit this country", edit_country_path(@country) %> |
+  <%= link_to "Back to country", country_index_path %>
+  <%= button_to "Destroy this country", @country, method: :delete, class:'button-4'%>
+</div>

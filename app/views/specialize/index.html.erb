@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Specialize" %>
+
+<h1>Specialize
+<%= link_to "New specialize", new_specialize_path, class:'button-4', id:'tb' %>
+</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Id</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @specialize.each do |specialize| %>
+      <tr>
+        <td><%= specialize.email %></td>
+        <td><%= specialize.id_specialize %></td>
+        <td><%= link_to 'Edit', edit_specialize_path(id_specialize: specialize.id_specialize, email: specialize.email), class:'button-4' %></td>
+        <td><%= button_to 'Destroy', specialize_path(id_specialize: specialize.id_specialize, email: specialize.email), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class:'button-4' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

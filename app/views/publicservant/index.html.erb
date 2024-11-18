@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Publicservant" %>
+
+<h1>Publicservant
+<%= link_to "New publicservant", new_publicservant_path, class:'button-4', id:'tb' %>
+</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Department</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @publicservant.each do |publicservant| %>
+      <tr>
+        <td><%= publicservant.email %></td>
+        <td><%= publicservant.department %></td>
+        <td><%= link_to 'Edit', edit_publicservant_path(publicservant), class:'button-4' %></td>
+        <td><%= button_to 'Destroy', publicservant, method: :delete, data: { turbo_confirm: 'Are you sure?' }, class:'button-4' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

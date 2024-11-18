@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @publicservant %>
+
+<div>
+  <%= link_to "Edit this publicservant", edit_publicservant_path(@publicservant) %> |
+  <%= link_to "Back to publicservant", publicservant_index_path %>
+
+  <%= button_to "Destroy this publicservant", @publicservant, method: :delete %>
+</div>

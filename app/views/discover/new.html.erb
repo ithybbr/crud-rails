@@ -1,0 +1,11 @@
+<% content_for :title, "New discover" %>
+
+<h1>New discover</h1>
+
+<%= render "form", discover: @discover %>
+
+<br>
+
+<div>
+  <%= link_to "Back to discover", discover_index_path %>
+</div>

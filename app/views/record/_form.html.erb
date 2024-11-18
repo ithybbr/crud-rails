@@ -1,0 +1,44 @@
+<%= form_with model: @record, 
+              url: @record.persisted? ? record_path(email: @record.email, cname: @record.cname, disease_code: @record.disease_code) : record, 
+              method: @record.persisted? ? :patch : :post do |form| %>
+  <% if record.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+        <% record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :cname, style: "display: block" %>
+    <%= form.text_field :cname %>
+  </div>
+
+  <div>
+    <%= form.label :disease_code, style: "display: block" %>
+    <%= form.text_field :disease_code %>
+  </div>
+
+  <div>
+    <%= form.label :total_deaths, style: "display: block" %>
+    <%= form.number_field :total_deaths %>
+  </div>
+
+  <div>
+    <%= form.label :total_patients, style: "display: block" %>
+    <%= form.number_field :total_patients %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
